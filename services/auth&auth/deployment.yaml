@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: auth-and-auth
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: auth-and-auth
+    template:
+        metadata:
+            labels:
+                app: auth-and-auth
+        spec:
+            containers:
+                - name: auth-and-auth
+                  image: auth-and-auth:latest
+                  imagePullPolicy: Never # Always
+                  # envFrom:
+                  # - secretRef:
+                  #    name: credentials
+                  ports:
+                      - containerPort: 5000
