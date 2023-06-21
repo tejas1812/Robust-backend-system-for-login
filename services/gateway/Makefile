@@ -5,10 +5,10 @@ build:
 	docker build -f Dockerfile -t gateway .
 
 push:
-	docker tag login-backend $(DOCKERUSER)/login-backend:$(VERSION)
-	docker push $(DOCKERUSER)/login-backend:$(VERSION)
-	docker tag login-backend $(DOCKERUSER)/login-backend:latest
-	docker push $(DOCKERUSER)/login-backend:latest
+	docker tag gateway $(DOCKERUSER)/gateway:$(VERSION)
+	docker push $(DOCKERUSER)/gateway:$(VERSION)
+	docker tag gateway $(DOCKERUSER)/gateway:latest
+	docker push $(DOCKERUSER)/gateway:latest
 
 deploy:
 	kubectl apply -f deployment.yaml
