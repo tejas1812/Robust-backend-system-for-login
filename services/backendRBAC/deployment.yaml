@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: backend-rbac
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: backend-rbac
+    template:
+        metadata:
+            labels:
+                app: backend-rbac
+        spec:
+            containers:
+                - name: backend-rbac
+                  image: backend-rbac:latest
+                  imagePullPolicy: Never # Always
+                  # envFrom:
+                  # - secretRef:
+                  #    name: credentials
+                  ports:
+                      - containerPort: 5000
