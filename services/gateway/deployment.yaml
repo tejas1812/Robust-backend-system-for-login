@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: gateway
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: gateway
+    template:
+        metadata:
+            labels:
+                app: gateway
+        spec:
+            containers:
+                - name: gateway
+                  image: gateway:latest
+                  imagePullPolicy: Never # Always
+                  # envFrom:
+                  # - secretRef:
+                  #    name: credentials
+                  ports:
+                      - containerPort: 5000
