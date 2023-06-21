@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Portal</title>
+    <!-- Add any CSS styling here -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        label, input, select {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .right-corner {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 10px;
+        }
+
+        .logout-button {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .logout-button:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <h1>Portal</h1>
+    <div>
+        {% for organization in organizations %}
+        <div>
+            <h2>Organization: {{ organization.org_name }}</h2>
+            <p>Role: {{ organization.role }}</p>
+            <form method="post" action="/portal">
+                <!-- Hidden field for org_id -->
+                <input type="hidden" name="org_id" value="{{ organization.org_id }}">
+                <!-- Render buttons for each callback -->
+                {% for callback in organization.callbacks %}
+                <button type="submit" name="callback" value="{{ callback }}">{{ callback }}</button>
+                {% endfor %}
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="right-corner">
+        Logged in as {{ identity }}
+        <form action="/logout" method="POST">
+            <button type="submit" class="logout-button">Logout</button>
+        </form>
+    </div>
+</body>
+</html>
