@@ -8,6 +8,7 @@ URL : [GCloud](http://34.66.38.222/)
 * Make use of ```HTTPS``` for secured connections ( Move from ```requests``` module to ```urllib3``` module
 * Implement CSRF Protection ( Flask module ```Flask-WTF``` )
 * Microservices communication can made asynchronous (Message Queue)
+* Acceptance Test and CI/CD
 
 
 
