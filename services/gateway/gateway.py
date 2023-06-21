@@ -13,8 +13,8 @@ from flask_jwt_extended import JWTManager, get_jwt_identity, get_jwt, jwt_requir
 
 gateway = Blueprint('gateway', __name__)
 
-auth_service_url = os.getenv('AUTH_URL', "http://10.1.1.74:5000")
-backend_url = os.getenv('BACKEND_URL', "http://10.1.1.55:5000")
+auth_service_url = os.getenv('AUTH_URL', "")
+backend_url = os.getenv('BACKEND_URL', "")
 
 
 @gateway.route('/login', methods=['GET', 'POST'])
